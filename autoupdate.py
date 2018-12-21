@@ -30,7 +30,7 @@ import log_util
 # Allow importing from aosp/system/update_engine/scripts when running from
 # source tree. Used for importing update_payload if it is not in the system
 # path.
-lib_dir = os.path.join(os.path.dirname(__file__), '..','update_engine', 'scripts')
+lib_dir = os.path.join(os.path.dirname(__file__), '.','update_engine', 'scripts')
 if os.path.exists(lib_dir) and os.path.isdir(lib_dir):
   sys.path.insert(1, lib_dir)
 import update_payload
@@ -426,7 +426,9 @@ class Autoupdate(build_util.BuildObject):
       #self.GenerateStatefulFile(image_path, output_dir)
     except subprocess.CalledProcessError:
       os.system('rm -rf "%s"' % output_dir)
-      raise AutoupdateError('Failed to generate update in %s' % output_dir)
+
+      error_info = 'Failed to generate update in ' + output_dir
+      raise AutoupdateError(error_info)
 
   def GenerateUpdateImageWithCache(self, image_path):
     """Force generates an update payload based on the given image_path.

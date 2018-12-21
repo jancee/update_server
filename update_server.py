@@ -570,8 +570,6 @@ def main():
         _CleanCache(cache_dir, options.clear_cache)
     else:
         os.makedirs(cache_dir)
-    if options.exit:
-        return
 
     _Log('Using cache directory %s' % cache_dir)
     _Log('Serving from %s' % options.static_dir)
@@ -600,6 +598,9 @@ def main():
     if options.pregenerate_update:
         updater.PreGenerateUpdate()
 
+    if options.exit:
+        return
+    
     # Patch CherryPy to support binding to any available port (--port=0).
     portend.free('::1', options.port, timeout=5)
 
