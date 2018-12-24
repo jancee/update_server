@@ -5,6 +5,7 @@
 ```shell
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/delta_generator
 export PATH=$PATH:$PWD/delta_generator:$PWD/chromite/bin
+git submodule init && git submodule update
 
 #delta update .eg:
 sudo python update_server.py  \
