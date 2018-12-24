@@ -2,6 +2,7 @@ version: '2'
 services:
   server:
     image: 'jancee/update-server:latest'
+    privileged: true
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
