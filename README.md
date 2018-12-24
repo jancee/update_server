@@ -27,8 +27,11 @@ first, build docker image
 ./build_docker_image.sh
 ```
 
-last, using compose, to startup a container
+last, using docker compose, to startup a container
+
+```
 ./compose_docker_image.sh
+```
 
 change volumes to your own
 
