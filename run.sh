@@ -44,6 +44,15 @@ cd $document_name && tar cvzf /opt/extern-volume/tmp/build.tar.gz . && rm -rf $d
 xz -9 -k -e -z /opt/extern-volume/tmp/build.tar.gz
 mv /opt/extern-volume/tmp/build.tar.gz.xz /opt/extern-volume/output/ && rm -rf /opt/extern-volume/tmp/*
 
+
+
+# mount img, and copy config to output
+mkdir -p /img-mnt/old /img-mnt/new
+mount -o loop,offset=895483904,ro /opt/extern-volume/input/old.img /img-mnt/old
+mount -o loop,offset=895483904,ro /opt/extern-volume/input/new.img /img-mnt/new
+cp /img-mnt/old/usr/local/update_engine_client/config.ini /opt/extern-volume/output/old-config.ini
+cp /img-mnt/new/usr/local/update_engine_client/config.ini /opt/extern-volume/output/new-config.ini
+
 # console打印ok，表示成功
 echo "==Finished OK=="
 exit 0
