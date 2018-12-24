@@ -1,0 +1,12 @@
+version: '2'
+services:
+  server:
+    image: 'jancee/update-server:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - /Users/jancee/Desktop/seeed-update-engine-test-extern-volume/input:/opt/extern-volume/input
+      - /Users/jancee/Desktop/seeed-update-engine-test-extern-volume/output:/opt/extern-volume/output
+    command: "./run.sh"
+
+

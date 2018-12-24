@@ -4,5 +4,13 @@
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/delta_generator
 export PATH=$PATH:$PWD/delta_generator:$PWD/chromite/bin
 #delta update .eg:
-python update_server.py  --image=/home/baozhu/u750/chromiumos/src/build/images/beaglebone/latest/chromiumos_image.bin --src_image=/home/baozhu/u750/chromiumos/src/build/images/beaglebone/R72-11238.0.2018_12_03_1501-a1/chromiumos_image.bin --board=beaglebone --host_log 
+sudo python update_server.py  \
+    --image=/home/parallels/develop/seeed-update-server/update_server/armhf-rootfs-debian-stretch-new.tar \
+    --src_image=/home/parallels/develop/seeed-update-server/update_server/armhf-rootfs-debian-stretch-old.tar \
+    --board=beaglebone \
+    --host_log \
+    --private_key=/home/parallels/develop/seeed-update-server/update_server/keys/playload_private_key.pem \
+    --private_key_for_metadata_hash_signature=/home/parallels/develop/seeed-update-server/update_server/keys/playload_private_key.pem \
+    -p \
+    --exit
 ```
