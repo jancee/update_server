@@ -2,3 +2,4 @@
 /static
 *.pyc
 /docs
+/extern-volume
