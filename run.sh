@@ -50,8 +50,8 @@ mv /opt/extern-volume/tmp/build.tar.gz.xz /opt/extern-volume/output/ && rm -rf /
 mkdir -p /img-mnt/old /img-mnt/new
 mount -o loop,offset=895483904,ro /opt/extern-volume/input/old.img /img-mnt/old
 mount -o loop,offset=895483904,ro /opt/extern-volume/input/new.img /img-mnt/new
-cp /img-mnt/old/usr/local/update_engine_client/config.ini /opt/extern-volume/output/old-config.ini
-cp /img-mnt/new/usr/local/update_engine_client/config.ini /opt/extern-volume/output/new-config.ini
+cp /img-mnt/old/etc/lsb-release /opt/extern-volume/output/old-lsb-release
+cp /img-mnt/new/etc/lsb-release /opt/extern-volume/output/new-lsb-release
 
 # console打印ok，表示成功
 echo "==Finished OK=="

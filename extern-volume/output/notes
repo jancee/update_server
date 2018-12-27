@@ -2,3 +2,5 @@
 /build.tar.gz.xz/metadata_hash
 /build.tar.gz.xz/update.gz
 /build.tar.gz.xz/update.meta
+/old-lsb-release
+/new-lsb-release
