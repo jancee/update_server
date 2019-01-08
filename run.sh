@@ -40,11 +40,12 @@ else
 fi
 
 # tar&gz&xz files, and output the package
-cd $document_name && tar cvzf /opt/extern-volume/tmp/build.tar.gz . && rm -rf $document_name
-xz -9 -k -e -z /opt/extern-volume/tmp/build.tar.gz
-mv /opt/extern-volume/tmp/build.tar.gz.xz /opt/extern-volume/output/ && rm -rf /opt/extern-volume/tmp/*
-
-
+# cd $document_name && tar cvzf /opt/extern-volume/tmp/build.tar.gz . && rm -rf $document_name
+# xz -9 -k -e -z /opt/extern-volume/tmp/build.tar.gz
+# mv /opt/extern-volume/tmp/build.tar.gz.xz /opt/extern-volume/output/ && rm -rf /opt/extern-volume/tmp/*
+mv ${document_name}/metadata_hash /opt/extern-volume/output/
+mv ${document_name}/update.gz /opt/extern-volume/output/
+mv ${document_name}/update.meta /opt/extern-volume/output/
 
 # mount img, and copy config to output
 mkdir -p /img-mnt/old /img-mnt/new
