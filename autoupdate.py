@@ -17,6 +17,7 @@ import threading
 import time
 import urllib2
 import urlparse
+import binascii
 
 import cherrypy
 
@@ -209,7 +210,8 @@ class Autoupdate(build_util.BuildObject):
     ISDELTA_ATTR = 'is_delta'
     METADATA_SIZE_ATTR = 'metadata_size'
     METADATA_HASH_ATTR = 'metadata_hash'
-    SIGNED_METADATA_HASH = 'signed_metadata_hash'
+    SIGNED_METADATA_HASH_ATTR = 'signed_metadata_hash'
+    HEXLIFY_SHA256_ATTR = 'hexlify_sha256'
 
     def __init__(self, urlbase=None, forced_image=None, payload_path=None,
                  proxy_port=None, src_image='', board=None,
@@ -286,7 +288,8 @@ class Autoupdate(build_util.BuildObject):
                      cls.ISDELTA_ATTR: metadata_obj.is_delta_format,
                      cls.METADATA_SIZE_ATTR: metadata_obj.metadata_size,
                      cls.METADATA_HASH_ATTR: metadata_obj.metadata_hash,
-                     cls.SIGNED_METADATA_HASH: metadata_obj.signed_metadata_hash}
+                     cls.SIGNED_METADATA_HASH_ATTR: metadata_obj.signed_metadata_hash,
+                     cls.HEXLIFY_SHA256_ATTR: binascii.hexlify(base64.b64decode(metadata_obj.sha256))}
         metadata_file = os.path.join(payload_dir, constants.METADATA_FILE)
         file_handle = open(metadata_file, 'w')
         fcntl.lockf(file_handle.fileno(), fcntl.LOCK_EX)
