@@ -6,8 +6,8 @@ rm -rf /opt/extern-volume/tmp/*
 
 # Build Patcher
 python update_server.py \
-    --image=/opt/extern-volume/input/old.img \
-    --src_image=/opt/extern-volume/input/new.img \
+    --src_image=/opt/extern-volume/input/old.img \
+    --image=/opt/extern-volume/input/new.img \
     --board=beaglebone \
     --host_log \
     --private_key=/opt/extern-volume/input/playload_private_key.pem \
