@@ -2,12 +2,16 @@ version: '2'
 services:
   server:
     image: 'jancee/update-server:latest'
+    # image: '1b845e5c5ffe'
     privileged: true
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - /Users/jancee/Desktop/seeed-update-engine-test-extern-volume/input:/opt/extern-volume/input
       - /Users/jancee/Desktop/seeed-update-engine-test-extern-volume/output:/opt/extern-volume/output
+      # - /Volumes/3TBDisk/UpdateEngineProject/input:/opt/extern-volume/input
+      # - /Volumes/3TBDisk/UpdateEngineProject/output:/opt/extern-volume/output
     command: "./run.sh"
+    # command: "sleep 10000000000000"
 
 

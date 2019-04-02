@@ -48,9 +48,10 @@ mv ${document_name}/update.gz /opt/extern-volume/output/
 mv ${document_name}/update.meta /opt/extern-volume/output/
 
 # mount img, and copy config to output
+MOUNT_OFFSET=$(fdisk -l /opt/extern-volume/input/new.img | sed -n 11p | cut -d' ' -f3 | awk '{print int($0)*512}')
 mkdir -p /img-mnt/old /img-mnt/new
-mount -o loop,offset=895483904,ro /opt/extern-volume/input/old.img /img-mnt/old
-mount -o loop,offset=895483904,ro /opt/extern-volume/input/new.img /img-mnt/new
+mount -o loop,offset=${MOUNT_OFFSET},ro /opt/extern-volume/input/old.img /img-mnt/old
+mount -o loop,offset=${MOUNT_OFFSET},ro /opt/extern-volume/input/new.img /img-mnt/new
 cp /img-mnt/old/etc/lsb-release /opt/extern-volume/output/old-lsb-release
 cp /img-mnt/new/etc/lsb-release /opt/extern-volume/output/new-lsb-release
 
