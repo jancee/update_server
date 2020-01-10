@@ -48,7 +48,7 @@ mv ${document_name}/update.gz /opt/extern-volume/output/
 mv ${document_name}/update.meta /opt/extern-volume/output/
 
 # mount img, and copy config to output
-MOUNT_OFFSET=$(fdisk -l /opt/extern-volume/input/new.img | sed -n 11p | cut -d' ' -f3 | awk '{print int($0)*512}')
+MOUNT_OFFSET=$(fdisk -l /opt/extern-volume/input/new.img | sed -n 11p | cut -d' ' -f3 | awk '{printf "%.f",int($0)*512}')
 echo MountOffset${MOUNT_OFFSET}
 mkdir -p /img-mnt/old /img-mnt/new
 mount -o loop,offset=${MOUNT_OFFSET},ro /opt/extern-volume/input/old.img /img-mnt/old
